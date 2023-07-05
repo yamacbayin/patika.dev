@@ -76,21 +76,15 @@ public class Main {
             schoolMap.get(key).forEach(name ->
                     {
                         String[] nameArray = name.split(" ");
-                        boolean isStringMatching = false;
 
                         // Iterate over each name
                         // Exclude the surname
                         for (int i = 0; i < nameArray.length - 1; i++) {
                             if (nameArray[i].endsWith(suffix)) {
-                                isStringMatching = true;
+                                System.out.println("Class: " + key + " - Student Name: " + name);
                                 break;
                             }
                         }
-
-                        if (isStringMatching) {
-                            System.out.println("Class: " + key + " - Student Name: " + name);
-                        }
-
                     }
             );
         }
