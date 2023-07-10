@@ -27,7 +27,7 @@ public class MovieManager extends BaseManager {
         boolean runMovieLoop = true;
         while (runMovieLoop) {
             System.out.println("""
-                    Movie Manager\s
+                    === Movie Manager ===\s
                     1. Print all movies\s
                     2. Add a new movie
                     """);
@@ -39,7 +39,7 @@ public class MovieManager extends BaseManager {
                 case "h", "help" -> PrintHelpUtil.printMovieHelp();
                 case "q", "quit" -> runMovieLoop = false;
                 case "e", "exit" -> exit();
-                default -> System.out.println("Unknown command. Type help for commands list.");
+                default -> System.out.println("Unknown command. Type help to see the list of available commands.");
             }
         }
     }
@@ -79,7 +79,7 @@ public class MovieManager extends BaseManager {
                 int platformId;
                 boolean isAdded = false;
                 do {
-                    System.out.println("Enter a platform's id to add: ");
+                    System.out.println("Enter a platform ID to add: ");
                     while (!scanner.hasNextInt()) {
                         System.out.println("Enter a valid id!");
                         scanner.next();
@@ -95,7 +95,7 @@ public class MovieManager extends BaseManager {
 
                         if (!newMoviePlatforms.contains(addedPlatform)) {
                             newMoviePlatforms.add(addedPlatform);
-                            System.out.println("Platform " + addedPlatform.getName() + " is added successfully.");
+                            System.out.println("Platform " + addedPlatform.getName() + " added successfully.");
                             isAdded = true;
                         } else {
                             System.out.println("Already added!");
@@ -138,7 +138,7 @@ public class MovieManager extends BaseManager {
                 int categoriesId;
                 boolean isAdded = false;
                 do {
-                    System.out.println("Enter a category's id to add: ");
+                    System.out.println("Enter a category ID to add: ");
                     while (!scanner.hasNextInt()) {
                         System.out.println("Enter a valid id!");
                         scanner.next();
@@ -154,7 +154,7 @@ public class MovieManager extends BaseManager {
 
                         if (!newMovieCategories.contains(addedCategory)) {
                             newMovieCategories.add(addedCategory);
-                            System.out.println("Category " + addedCategory.getName() + " is added successfully.");
+                            System.out.println("Category " + addedCategory.getName() + " added successfully.");
                             isAdded = true;
                         } else {
                             System.out.println("Already added!");
@@ -185,12 +185,11 @@ public class MovieManager extends BaseManager {
                             addCategoriesLoop = false;
                     }
                 }
-
             }
 
 
             while (addShowtimesLoop) {
-                System.out.println("Enter a showtime data: ");
+                System.out.println("Enter a showtime: ");
                 String showtime = scanner.nextLine();
 
                 if (!newMovieShowtimes.contains(showtime)) {
@@ -220,7 +219,7 @@ public class MovieManager extends BaseManager {
             movieList.add(newMovie);
             categoryManager.updateCategoryMovieCount(newMovieCategories);
             platformManager.updatePlatformMovieCount(newMoviePlatforms);
-            System.out.println("Movie " + newMovie.getMovieName() + " is added successfully.");
+            System.out.println("Movie " + newMovie.getMovieName() + " added successfully.");
 
             System.out.println("Do you want to create another movie? [y/N]");
             String input = scanner.nextLine();

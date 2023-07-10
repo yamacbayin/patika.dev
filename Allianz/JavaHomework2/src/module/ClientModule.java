@@ -20,9 +20,9 @@ public class ClientModule extends BaseModule {
         boolean runClientLoop = true;
         while (runClientLoop) {
             System.out.println("""
-                    You are logged in as client. What do you want to do?\s
-                    1. See all movies\s
-                    2. See all categories
+                    You are logged in as a client. What would you like to do?\s
+                    1. View all movies\s
+                    2. View all categories
                     """);
 
             String input = scanner.nextLine();
@@ -33,7 +33,7 @@ public class ClientModule extends BaseModule {
                 case "h", "help" -> PrintHelpUtil.printClientHelp();
                 case "q", "quit" -> runClientLoop = false;
                 case "e", "exit" -> exit();
-                default -> System.out.println("Unknown command. Type help for commands list.");
+                default -> System.out.println("Unknown command. Type help to see the list of available commands.");
             }
         }
     }
@@ -44,7 +44,7 @@ public class ClientModule extends BaseModule {
             System.out.println("There are no categories in the category list. Add one to get started. \n");
         } else {
 
-            System.out.println("Printing " + Category.categoryCount + " platforms.");
+            System.out.println("Printing " + Category.categoryCount + " categories.");
             for (Category category : categoryList) {
                 System.out.println("ID: " + category.getId() + ". " + category.getName()
                         + " - Movie count: " + category.getMovieCount());
@@ -59,7 +59,7 @@ public class ClientModule extends BaseModule {
                 int selectedId;
 
                 do {
-                    System.out.println("Enter a category's id to see it's movies: ");
+                    System.out.println("Enter the ID of the category to see its movies: ");
                     while (!scanner.hasNextInt()) {
                         System.out.println("Enter a valid id!");
                         scanner.next();
@@ -82,7 +82,7 @@ public class ClientModule extends BaseModule {
                     }
                 } while (!isCategorySelected);
 
-                System.out.println("Do you want to see details of another category? [y/N]");
+                System.out.println("Do you want to see the details of another category? [y/N]");
                 String input = scanner.nextLine();
                 switch (input.toLowerCase()) {
                     case "y", "yes":

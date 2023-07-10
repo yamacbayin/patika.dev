@@ -27,7 +27,7 @@ public class PrintMoviesUtil {
                 int selectedMovieId;
 
                 do {
-                    System.out.println("Enter a movie's id to see details: ");
+                    System.out.println("Enter the ID of a movie to see its details: ");
                     while (!scanner.hasNextInt()) {
                         System.out.println("Enter a valid id!");
                         scanner.next();
@@ -49,7 +49,7 @@ public class PrintMoviesUtil {
                         if(isMovieFound) {
                             isMovieSelected = true;
                         } else {
-                            System.out.println("ID: " + selectedMovieId + " is not in this category.");
+                            System.out.println("Movie with ID " + selectedMovieId + " is not in this category.");
                         }
 
                     }

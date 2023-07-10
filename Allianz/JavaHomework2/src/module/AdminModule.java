@@ -29,10 +29,10 @@ public class AdminModule extends BaseModule {
         boolean runAdminLoop = true;
         while (runAdminLoop) {
             System.out.println("""
-                    You are logged in as admin. What do you want to do?\s
-                    1. Platform Manager\s
-                    2. Category Manager\s
-                    3. Movie Manager
+                    You are logged in as admin. What would you like to do?\s
+                    1. Manage Platforms\s
+                    2. Manage Categories\s
+                    3. Manage Movies
                     """);
             String input = scanner.nextLine();
 
@@ -43,7 +43,7 @@ public class AdminModule extends BaseModule {
                 case "h", "help" -> PrintHelpUtil.printAdminHelp();
                 case "q", "quit" -> runAdminLoop = false;
                 case "e", "exit" -> exit();
-                default -> System.out.println("Unknown command. Type help for commands list.");
+                default -> System.out.println("Unknown command. Type help to see the list of available commands.");
             }
         }
     }

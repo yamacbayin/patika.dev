@@ -20,7 +20,7 @@ public class PlatformManager extends BaseManager {
         boolean runPlatformLoop = true;
         while (runPlatformLoop) {
             System.out.println("""
-                    Platform Manager\s
+                    === Platform Manager ===\s
                     1. Print all platforms\s
                     2. Add a new platform
                     """);
@@ -32,7 +32,7 @@ public class PlatformManager extends BaseManager {
                 case "h", "help" -> PrintHelpUtil.printPlatformHelp();
                 case "q", "quit" -> runPlatformLoop = false;
                 case "e", "exit" -> exit();
-                default -> System.out.println("Unknown command. Type help for commands list.");
+                default -> System.out.println("Unknown command. Type help to see the list of available commands.");
             }
 
         }

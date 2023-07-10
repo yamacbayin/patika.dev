@@ -20,7 +20,7 @@ public class CategoryManager extends BaseManager {
         boolean runCategoryLoop = true;
         while (runCategoryLoop) {
             System.out.println("""
-                    Category Manager\s
+                    === Category Manager ===\s
                     1. Print all categories\s
                     2. Add a new category
                     """);
@@ -32,7 +32,7 @@ public class CategoryManager extends BaseManager {
                 case "h", "help" -> PrintHelpUtil.printCategoryHelp();
                 case "q", "quit" -> runCategoryLoop = false;
                 case "e", "exit" -> exit();
-                default -> System.out.println("Unknown command. Type help for commands list.");
+                default -> System.out.println("Unknown command. Type help to see the list of available commands.");
             }
         }
     }
@@ -43,7 +43,7 @@ public class CategoryManager extends BaseManager {
             System.out.println("There are no categories in the category list. Add one to get started. \n");
         } else {
 
-            System.out.println("Printing " + Category.categoryCount + " platforms.");
+            System.out.println("Printing " + Category.categoryCount + " categories.");
             for (Category category : categoryList) {
                 System.out.println("ID: " + category.getId() + ". " + category.getName()
                         + " - Movie count: " + category.getMovieCount());
