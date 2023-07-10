@@ -1,32 +1,21 @@
-package Model;
+package model;
 
 import java.util.Objects;
 
-public class Category {
-
-    public static int categoryCount = 0;
+public class Platform {
+    public static int platformCount = 0;
 
     private int id;
     private String name;
-
     private int movieCount;
 
-
-    public Category(String name) {
-        this.id = ++categoryCount;
+   public Platform(String name) {
+        this.id = ++platformCount;
         this.name = name;
     }
 
     public void incrementMovieCount() {
-        this.movieCount++;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
+       this.movieCount++;
     }
 
     public int getId() {
@@ -35,6 +24,14 @@ public class Category {
 
     public void setId(int id) {
         this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 
     public int getMovieCount() {
@@ -49,8 +46,8 @@ public class Category {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        Category category = (Category) o;
-        return getId() == category.getId() && getMovieCount() == category.getMovieCount() && Objects.equals(getName(), category.getName());
+        Platform platform = (Platform) o;
+        return getId() == platform.getId() && getMovieCount() == platform.getMovieCount() && Objects.equals(getName(), platform.getName());
     }
 
     @Override
@@ -60,7 +57,7 @@ public class Category {
 
     @Override
     public String toString() {
-        return "Category{" +
+        return "Platform{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
                 ", movieCount=" + movieCount +

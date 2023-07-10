@@ -1,4 +1,4 @@
-package Util;
+package util;
 
 public class PrintHelpUtil {
     public static void printHelp() {
