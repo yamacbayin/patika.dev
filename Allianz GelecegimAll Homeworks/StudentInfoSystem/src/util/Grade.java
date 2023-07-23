@@ -27,6 +27,7 @@ public enum Grade {
     public String toString() {
         return "Grade " + stringValue + " corresponds to numeric grade " + numericValue;
     }
+
     public static Grade getGradeByNumericValue(int numericValue) {
         for (Grade grade : values()) {
             if (grade.numericValue == numericValue) {

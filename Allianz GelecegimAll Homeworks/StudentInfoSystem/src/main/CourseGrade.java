@@ -82,7 +82,7 @@ public class CourseGrade {
     public void setGradeTaken(double val) {
         if (val >= 0 && val <= 4) {
             int roundedScore = (int) Math.round(val);
-            // Sets the grade according to the score. Returns Grade.F if no match is found.
+            // Determines the grade based on the given score. Returns Grade.F if no match is found.
             this.gradeTaken = Grade.getGradeByNumericValue(roundedScore);
         } else {
             this.gradeTaken = Grade.F;
