@@ -1,15 +1,15 @@
 package model;
 
-import model.trainer.Character;
+import model.trainer.PokemonTrainer;
 
 public class Player {
     private String name;
-    private Character character;
+    private PokemonTrainer pokemonTrainer;
     private boolean isWinner;
 
-    public Player(String name, Character character) {
+    public Player(String name, PokemonTrainer pokemonTrainer) {
         this.name = name;
-        this.character = character;
+        this.pokemonTrainer = pokemonTrainer;
         this.isWinner = false;
     }
 
@@ -21,12 +21,12 @@ public class Player {
         this.name = name;
     }
 
-    public Character getCharacter() {
-        return character;
+    public PokemonTrainer getCharacter() {
+        return pokemonTrainer;
     }
 
-    public void setCharacter(Character character) {
-        this.character = character;
+    public void setCharacter(PokemonTrainer pokemonTrainer) {
+        this.pokemonTrainer = pokemonTrainer;
     }
 
     public boolean isWinner() {
@@ -41,7 +41,7 @@ public class Player {
     public String toString() {
         return "Player{" +
                 "name='" + name + '\'' +
-                ", characters=" + character +
+                ", characters=" + pokemonTrainer +
                 ", isWinner=" + isWinner +
                 '}';
     }

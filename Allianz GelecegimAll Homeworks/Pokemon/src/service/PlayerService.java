@@ -1,12 +1,12 @@
 package service;
 
-import model.trainer.Character;
+import model.trainer.PokemonTrainer;
 import model.Player;
 
 public class PlayerService {
 
-    public Player createPlayer(String name, Character character) {
-        return new Player(name, character);
+    public Player createPlayer(String name, PokemonTrainer pokemonTrainer) {
+        return new Player(name, pokemonTrainer);
     }
 
 

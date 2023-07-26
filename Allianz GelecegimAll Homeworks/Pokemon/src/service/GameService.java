@@ -5,47 +5,47 @@ import model.pokemon.Pokemon;
 
 public class GameService {
 
-    public void attack(Player attacker, Player defender, boolean isPokeSpecialAttack, boolean isCharSpecialAttack) {
+/*    public void attack(Player attacker, Player defender, boolean isPokeSpecialAttack, boolean isCharSpecialAttack) {
         Pokemon attackingPokemon = attacker.getCharacter().getPokemonList().get(0);
         Pokemon defendingPokemon = defender.getCharacter().getPokemonList().get(0);
 
         boolean specialAttack = false;
         if (isPokeSpecialAttack && isCharSpecialAttack) {
-            specialAttack = attackingPokemon.getSpecialPower().getRemainingRights() > 0
-                    && attacker.getCharacter().getSpecialPower().getRemainingRights() > 0;
+            specialAttack = attackingPokemon.getSpecialPower().getRemainingUses() > 0
+                    && attacker.getCharacter().getSpecialPower().getRemainingUses() > 0;
         } else if (isPokeSpecialAttack) {
-            specialAttack = attackingPokemon.getSpecialPower().getRemainingRights() > 0;
+            specialAttack = attackingPokemon.getSpecialPower().getRemainingUses() > 0;
         } else if (isCharSpecialAttack) {
-            specialAttack = attacker.getCharacter().getSpecialPower().getRemainingRights() > 0;
+            specialAttack = attacker.getCharacter().getSpecialPower().getRemainingUses() > 0;
         }
 
-        int charRemainingRights = attacker.getCharacter().getSpecialPower().getRemainingRights();
+        int charRemainingRights = attacker.getCharacter().getSpecialPower().getRemainingUses();
 
         int damage = 0;
         if (specialAttack) {
             if (isPokeSpecialAttack && isCharSpecialAttack) {
                 damage += attackingPokemon.specialAttack();
                 damage += attacker.getCharacter().getSpecialPower().getExtraDamage();
-                attacker.getCharacter().getSpecialPower().setRemainingRights(charRemainingRights - 1);
+                attacker.getCharacter().getSpecialPower().setRemainingUses(charRemainingRights - 1);
             } else if (isPokeSpecialAttack) {
                 damage += attackingPokemon.specialAttack();
             } else {
-                damage += attackingPokemon.getDamage();
+                damage += attackingPokemon.getBaseDamage();
                 damage += attacker.getCharacter().getSpecialPower().getExtraDamage();
-                attacker.getCharacter().getSpecialPower().setRemainingRights(charRemainingRights - 1);
+                attacker.getCharacter().getSpecialPower().setRemainingUses(charRemainingRights - 1);
             }
         } else {
             if (isPokeSpecialAttack || isCharSpecialAttack) {
             } else {
-                damage += attackingPokemon.getDamage();
+                damage += attackingPokemon.getBaseDamage();
             }
         }
 
-        defendingPokemon.setHealth(defendingPokemon.getHealth() - damage);
-    }
+        defendingPokemon.setCurrentHealth(defendingPokemon.getCurrentHealth() - damage);
+    }*/
 
     private boolean checkGameOver(Pokemon p1, Pokemon p2) {
-        return p1.getHealth() > 0 && p2.getHealth() > 0;
+        return p1.getCurrentHealth() > 0 && p2.getCurrentHealth() > 0;
     }
 
     public void fight(Player p1, Player p2) {

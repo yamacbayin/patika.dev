@@ -1,10 +1,9 @@
 package model.pokemon;
 
-import model.SpecialPower;
-import model.TypeEnum;
+import model.ElementalTypeEnum;
 
 public class Charmander extends Pokemon{
-    public Charmander(String name, int health, int damage, TypeEnum type, SpecialPower specialPower) {
-        super(name, health, damage, type, specialPower);
+    public Charmander(String name, int maxHealth, int normalDamage, ElementalTypeEnum pokemonType, int maxSkillCount) {
+        super(name, maxHealth, normalDamage, pokemonType, maxSkillCount);
     }
 }

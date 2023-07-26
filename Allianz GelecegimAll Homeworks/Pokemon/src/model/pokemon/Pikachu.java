@@ -1,10 +1,10 @@
 package model.pokemon;
 
-import model.SpecialPower;
-import model.TypeEnum;
+import model.ElementalTypeEnum;
 
-public class Pikachu extends Pokemon{
-    public Pikachu(String name, int health, int damage, TypeEnum type, SpecialPower specialPower) {
-        super(name, health, damage, type, specialPower);
+public class Pikachu extends Pokemon {
+    public Pikachu(String name, int maxHealth, int normalDamage, ElementalTypeEnum pokemonType, int maxSkillCount) {
+        super(name, maxHealth, normalDamage, pokemonType, maxSkillCount);
     }
+
 }
