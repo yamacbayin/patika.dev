@@ -131,7 +131,7 @@ public class MineSweeper {
     private int checkNearbyMines(int x, int y) {
         int nearbyMinesCount = 0;
 
-        // check top row
+        // check the top row
         if (y - 1 >= 0) {
             // top left cell
             if (x - 1 >= 0) {
@@ -146,7 +146,7 @@ public class MineSweeper {
             }
         }
 
-        // check the same roll
+        // check the same row
         // check left cell
         if (x - 1 >= 0) {
             nearbyMinesCount += mines[x - 1][y].equals("*") ? 1 : 0;
@@ -156,7 +156,7 @@ public class MineSweeper {
             nearbyMinesCount += mines[x + 1][y].equals("*") ? 1 : 0;
         }
 
-        //check bottom row
+        //check the bottom row
         if (y + 1 < columnCount) {
             // bottom left cell
             if (x - 1 >= 0) {
