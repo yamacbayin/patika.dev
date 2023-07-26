@@ -1,0 +1,48 @@
+package model;
+
+import model.trainer.Character;
+
+public class Player {
+    private String name;
+    private Character character;
+    private boolean isWinner;
+
+    public Player(String name, Character character) {
+        this.name = name;
+        this.character = character;
+        this.isWinner = false;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public Character getCharacter() {
+        return character;
+    }
+
+    public void setCharacter(Character character) {
+        this.character = character;
+    }
+
+    public boolean isWinner() {
+        return isWinner;
+    }
+
+    public void setWinner(boolean winner) {
+        isWinner = winner;
+    }
+
+    @Override
+    public String toString() {
+        return "Player{" +
+                "name='" + name + '\'' +
+                ", characters=" + character +
+                ", isWinner=" + isWinner +
+                '}';
+    }
+}
