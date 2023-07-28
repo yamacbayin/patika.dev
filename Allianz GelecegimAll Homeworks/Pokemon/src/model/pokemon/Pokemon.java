@@ -5,6 +5,7 @@ import model.pokemonskill.PokemonSkill;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 public class Pokemon {
     private String name;
@@ -61,6 +62,7 @@ public class Pokemon {
     private void calculateStrength() {
         int strength = 0;
         strength += maxHealth;
+        strength += normalDamage;
         for (PokemonSkill skill : pokemonSkillList) {
             strength += skill.getExtraDamage() * skill.getMaxUses();
         }
@@ -129,15 +131,30 @@ public class Pokemon {
 
     @Override
     public String toString() {
-        return "Pokemon{" +
-                "name='" + name + '\'' +
-                ", maxHealth=" + maxHealth +
-                ", currentHealth=" + currentHealth +
-                ", normalDamage=" + normalDamage +
-                ", pokemonType=" + pokemonType +
-                ", maxSkillCount=" + maxSkillCount +
-                ", pokemonSkillList=" + pokemonSkillList +
-                '}';
+        return "Pokemon: " + name +
+                ", Max Health: " + maxHealth +
+                ", Current Health: " + currentHealth +
+                ", Normal Damage: " + normalDamage +
+                ", Type: " + pokemonType +
+                ", Max Skill Count: " + maxSkillCount +
+                ", Strength: " + pokemonStrength +
+                ", Pokemon's Skills: " + pokemonSkillList;
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Pokemon pokemon)) return false;
+        return getMaxHealth() == pokemon.getMaxHealth() && getCurrentHealth() == pokemon.getCurrentHealth()
+                && getNormalDamage() == pokemon.getNormalDamage() && getMaxSkillCount() == pokemon.getMaxSkillCount()
+                && getPokemonStrength() == pokemon.getPokemonStrength() && Objects.equals(getName(), pokemon.getName())
+                && getPokemonType() == pokemon.getPokemonType()
+                && Objects.equals(getPokemonSkillList(), pokemon.getPokemonSkillList());
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(getName(), getMaxHealth(), getCurrentHealth(), getNormalDamage(), getPokemonType(),
+                getMaxSkillCount(), getPokemonSkillList(), getPokemonStrength());
+    }
 }

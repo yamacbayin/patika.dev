@@ -1,41 +1,108 @@
 package service;
 
+import model.ElementalTypeEnum;
+import model.pokemonskill.*;
+import model.trainer.Ash;
+import model.trainer.Brock;
+import model.trainer.Misty;
 import model.trainer.PokemonTrainer;
 import model.pokemon.*;
+import model.trainerskill.Heal;
+import model.trainerskill.Motivate;
+import model.trainerskill.TrainerSkill;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class LoadService {
-    public ArrayList<PokemonTrainer> loadCharacters(){
-/*        PokemonSkill strategy1 = new Strategy("Strategy", 4, 1);
-        PokemonSkill strategy2 = new Strategy("Strategy II", 3, 1);
 
-        PokemonTrainer ash = new Ash("Ash", strategy1, null);
-        PokemonTrainer brooke = new Brock("Brooke", strategy2, null);
+    public List<TrainerSkill> loadTrainerSkills() {
+        List<TrainerSkill> trainerSkillArrayList = new ArrayList<>();
 
-        ArrayList<PokemonTrainer> pokemonTrainerList = new ArrayList<>();
-        pokemonTrainerList.add(ash);
-        pokemonTrainerList.add(brooke);
-        return pokemonTrainerList;*/
+        TrainerSkill heal = new Heal();
+        TrainerSkill motivate = new Motivate();
+
+        trainerSkillArrayList.add(heal);
+        trainerSkillArrayList.add(motivate);
+
+        return trainerSkillArrayList;
     }
 
-    public ArrayList<Pokemon> loadPokemons(){
-/*        PokemonSkill electricity = new ElectricPokemon("Electricty", 3, 3);
-        PokemonSkill water = new Water("Water", 1, 3);
-        PokemonSkill fire = new Fire("Fire", 5, 3);
-        PokemonSkill earth = new Earth("Earth", 4, 3);
+    public List<PokemonTrainer> loadTrainers() {
 
-        Pokemon pokemon1 = new Pikachu("Pikachu", 100, 10, TypeEnum.ELECTRICY, electricity);
-        Pokemon pokemon2 = new Squirtle("Squirtle", 120, 8, TypeEnum.WATER, water);
-        Pokemon pokemon3 = new Charmander("Charmender", 90, 12, TypeEnum.FIRE, fire);
-        Pokemon pokemon4 = new Bulbasaur("Balbausar", 140, 7, TypeEnum.EARTH, earth);
+        List<PokemonTrainer> pokemonTrainerArrayList = new ArrayList<>();
 
+        PokemonTrainer ash = new Ash("Ash", new Motivate());
+        PokemonTrainer brock = new Brock("Brock", new Motivate());
+        PokemonTrainer misty = new Misty("Misty", new Heal());
+
+        pokemonTrainerArrayList.add(ash);
+        pokemonTrainerArrayList.add(brock);
+        pokemonTrainerArrayList.add(misty);
+
+        return pokemonTrainerArrayList;
+
+    }
+
+    public List<PokemonSkill> loadPokemonSkills() {
+        List<PokemonSkill> pokemonSkillArrayList = new ArrayList<>();
+
+        PokemonSkill spark = new Spark();
+        PokemonSkill voltSwitch = new VoltSwitch();
+        PokemonSkill thunder = new Thunder();
+
+        pokemonSkillArrayList.add(spark);
+        pokemonSkillArrayList.add(voltSwitch);
+        pokemonSkillArrayList.add(thunder);
+
+        PokemonSkill fireBlast = new FireBlast();
+        PokemonSkill overheat = new Overheat();
+        PokemonSkill flamethrower = new Flamethrower();
+
+        pokemonSkillArrayList.add(fireBlast);
+        pokemonSkillArrayList.add(overheat);
+        pokemonSkillArrayList.add(flamethrower);
+
+        PokemonSkill aquaJet = new AquaJet();
+        PokemonSkill waterPulse = new WaterPulse();
+        PokemonSkill hydroCannon = new HydroCannon();
+
+        pokemonSkillArrayList.add(aquaJet);
+        pokemonSkillArrayList.add(waterPulse);
+        pokemonSkillArrayList.add(hydroCannon);
+
+        PokemonSkill vineWhip = new VineWhip();
+        PokemonSkill razorLeaf = new RazorLeaf();
+        PokemonSkill frenzyPlant = new FrenzyPlant();
+
+        pokemonSkillArrayList.add(vineWhip);
+        pokemonSkillArrayList.add(razorLeaf);
+        pokemonSkillArrayList.add(frenzyPlant);
+
+        return pokemonSkillArrayList;
+    }
+
+    public ArrayList<Pokemon> loadPokemons() {
+
+        Pokemon pikachu = new Pikachu("Pikachu", 110, 17, ElementalTypeEnum.ELECTRIC, 2);
+        Pokemon charmander = new Charmander("Charmander", 150, 11, ElementalTypeEnum.FIRE, 2);
+        Pokemon squirtle = new Squirtle("Squirtle", 120, 15, ElementalTypeEnum.WATER, 2);
+        Pokemon bulbasaur = new Bulbasaur("Bulbasaur", 150, 11, ElementalTypeEnum.EARTH, 2);
+        Pokemon raichu = new Raichu("Raichu", 220, 30, ElementalTypeEnum.ELECTRIC, 3);
+        Pokemon charizard = new Charizard("Charizard", 270, 23, ElementalTypeEnum.FIRE, 3);
+        Pokemon blastoise = new Blastoise("Blastoise", 225, 28, ElementalTypeEnum.WATER, 3);
+        Pokemon venusaur = new Venusaur("Venusaur", 240, 25, ElementalTypeEnum.EARTH, 3);
         ArrayList<Pokemon> pokemonList = new ArrayList<>();
-        pokemonList.add(pokemon1);
-        pokemonList.add(pokemon2);
-        pokemonList.add(pokemon3);
-        pokemonList.add(pokemon4);
 
-        return pokemonList;*/
+        pokemonList.add(pikachu);
+        pokemonList.add(charmander);
+        pokemonList.add(squirtle);
+        pokemonList.add(bulbasaur);
+        pokemonList.add(raichu);
+        pokemonList.add(charizard);
+        pokemonList.add(blastoise);
+        pokemonList.add(venusaur);
+
+        return pokemonList;
     }
 }

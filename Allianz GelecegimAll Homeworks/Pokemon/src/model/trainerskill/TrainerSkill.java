@@ -59,11 +59,9 @@ public class TrainerSkill {
 
     @Override
     public String toString() {
-        return "TrainerSkill{" +
-                "skillName='" + skillName + '\'' +
-                ", skillEffectAmount=" + skillEffectAmount +
-                ", remainingUses=" + remainingUses +
-                ", skillType=" + skillType +
-                '}';
+        return "Trainer Skill: " + skillName+
+                ", Effect Amount: " + skillEffectAmount +
+                ", Max Uses: " + maxUses +
+                ", Skill Type: " + skillType;
     }
 }

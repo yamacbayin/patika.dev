@@ -21,11 +21,11 @@ public class Player {
         this.name = name;
     }
 
-    public PokemonTrainer getCharacter() {
+    public PokemonTrainer getPokemonTrainer() {
         return pokemonTrainer;
     }
 
-    public void setCharacter(PokemonTrainer pokemonTrainer) {
+    public void setPokemonTrainer(PokemonTrainer pokemonTrainer) {
         this.pokemonTrainer = pokemonTrainer;
     }
 
@@ -39,10 +39,8 @@ public class Player {
 
     @Override
     public String toString() {
-        return "Player{" +
-                "name='" + name + '\'' +
-                ", characters=" + pokemonTrainer +
-                ", isWinner=" + isWinner +
-                '}';
+        return "Player: " + name + '\n' +
+                "Trainer: " + pokemonTrainer +
+                "Winner: " + isWinner;
     }
 }

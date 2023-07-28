@@ -46,10 +46,12 @@ public class PokemonTrainer {
 
     @Override
     public String toString() {
-        return "PokemonTrainer{" +
-                "name='" + name + '\'' +
-                ", trainerSkill=" + trainerSkill +
-                ", pokemonList=" + pokemonList +
-                '}';
+        StringBuilder pokemons = new StringBuilder();
+        for (Pokemon pokemon : pokemonList) {
+            pokemons.append(pokemon.toString()).append("\n");
+        }
+        return "Trainer " + name + "\n" +
+                trainerSkill + "\n" +
+                "Pokemon List: \n" + pokemons;
     }
 }

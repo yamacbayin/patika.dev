@@ -63,12 +63,10 @@ public class PokemonSkill {
 
     @Override
     public String toString() {
-        return "PokemonSkill{" +
-                "skillName='" + skillName + '\'' +
-                ", extraDamage=" + extraDamage +
-                ", maxUses=" + maxUses +
-                ", remainingUses=" + remainingUses +
-                ", skillType=" + skillType +
-                '}';
+        return "Skill: " + skillName +
+                ", Damage: " + extraDamage +
+                ", Max Uses: " + maxUses +
+                ", Remaining Uses: " + remainingUses +
+                ", Type: " + skillType;
     }
 }
