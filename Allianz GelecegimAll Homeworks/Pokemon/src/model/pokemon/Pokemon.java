@@ -132,13 +132,28 @@ public class Pokemon {
     @Override
     public String toString() {
         return "Pokemon: " + name +
+                ", Strength: " + pokemonStrength +
                 ", Max Health: " + maxHealth +
                 ", Current Health: " + currentHealth +
                 ", Normal Damage: " + normalDamage +
                 ", Type: " + pokemonType +
                 ", Max Skill Count: " + maxSkillCount +
-                ", Strength: " + pokemonStrength +
                 ", Pokemon's Skills: " + pokemonSkillList;
+    }
+
+    public String getPokemonInfo() {
+        StringBuilder skills = new StringBuilder();
+        for (PokemonSkill skill : pokemonSkillList) {
+            skills.append(skill.toString()).append("\n");
+        }
+        return "------------------------------\n" +
+                name +
+                ", Strength: " + pokemonStrength +
+                ", Current Health: " + currentHealth +
+                ", Type: " + pokemonType +
+                "\nSkills: \n" +
+                skills +
+                "------------------------------";
     }
 
     @Override

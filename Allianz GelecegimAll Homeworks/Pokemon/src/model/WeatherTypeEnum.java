@@ -1,10 +1,10 @@
 package model;
 
 public enum WeatherTypeEnum {
-    RAIN("Rain"),
-    SUNNY("Sunny"),
-    SANDSTORM("Sandstorm"),
-    THUNDERSTORM("Thunderstorm");
+    RAIN("Water"),
+    SUNNY("Fire"),
+    SANDSTORM("Earth"),
+    THUNDERSTORM("Electric");
 
     private final String weatherString;
 
