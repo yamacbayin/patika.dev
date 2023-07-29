@@ -66,24 +66,6 @@ public class CustomerService {
     }
 
 
-    public void acceptProposal(Customer customer, Proposal proposal, InsuranceRequest insuranceRequest) {
-        List<InsuranceRequest> insuranceRequestList = customer.getInsuranceRequestList();
-        for (InsuranceRequest insuranceRequest1 : insuranceRequestList) {
-            if (insuranceRequest1.equals(insuranceRequest)) {
-                for (Proposal proposal1 : insuranceRequest1.getProposalList()) {
-                    if (proposal1.equals(proposal)) {
-                        BankAccount bankAccount = checkBankAccount(customer, proposalService.calculateDiscountedPrice(proposal));
-                        if (bankAccount != null) {
-                            bankAccount.setAmount(bankAccount.getAmount().subtract(proposalService.calculateDiscountedPrice(proposal)));
-
-                        }
-                        proposal1.setApproved(true);
-                    }
-                }
-            }
-        }
-    }
-
     public BankAccount checkBankAccount(Customer customer, BigDecimal amount) {
         List<BankAccount> bankAccountList = customer.getBankAccountList();
         for (BankAccount bankAccount : bankAccountList) {
@@ -94,50 +76,6 @@ public class CustomerService {
         return null;
     }
 
-    public void acceptProposal(Customer customer, Proposal proposal, InsuranceRequest insuranceRequest, Agency agency) {
-        List<InsuranceRequest> insuranceRequestList = customer.getInsuranceRequestList();
-        for (InsuranceRequest request : insuranceRequestList) {
-            if (request.equals(insuranceRequest)) {
-                Proposal matchingProposal = insuranceRequest.getProposalList().stream()
-                        .filter(p -> p.equals(proposal))
-                        .findFirst()
-                        .orElse(null);
-
-                if (matchingProposal != null) {
-                    BigDecimal discountedPrice = proposalService.calculateDiscountedPrice(proposal);
-                    BigDecimal commissionAmount = discountedPrice.multiply(proposal.getCompany().getCommission().divide(new BigDecimal(100)));
-                    BankAccount customerBankAccount = checkCustomerBankAccount(customer, discountedPrice);
-                    BankAccount companyBankAccount = proposal.getCompany().getBankAccountList().get(0);
-                    BankAccount agencyBankAccount = agency.getBankAccountList().get(0);
-
-                    if (customerBankAccount != null && proposal.getCompany().getBankAccountList() != null && agency.getBankAccountList() != null) {
-                        bankAccountService.makePayment(companyBankAccount, customerBankAccount, discountedPrice);
-                        PaymentMovement customerPaymentMovement = paymentMovementService.createPaymentMovement(customerBankAccount, "Traffic Insurance Payment", MovementType.OUTCOME, discountedPrice);
-                        addPaymentMovementToCustomer(customer, customerPaymentMovement);
-                        PaymentMovement companyPaymentMovement = paymentMovementService.createPaymentMovement(companyBankAccount, "Insurance income", MovementType.INCOME, discountedPrice);
-                        companyService.addPaymentMovementToInsuranceCompany(proposal.getCompany(), companyPaymentMovement);
-                        bankAccountService.makePayment(agencyBankAccount, companyBankAccount, commissionAmount);
-                        PaymentMovement agencyPaymentMovement = paymentMovementService.createPaymentMovement(agencyBankAccount, "Commission income", MovementType.INCOME, commissionAmount);
-                        agencyService.addPaymentMovementToAgency(agency, agencyPaymentMovement);
-                        PaymentMovement companyPaymentMovement2 = paymentMovementService.createPaymentMovement(companyBankAccount, "Commission Outcome", MovementType.OUTCOME, commissionAmount);
-                        companyService.addPaymentMovementToInsuranceCompany(proposal.getCompany(), companyPaymentMovement2);
-
-                        Policy policy = policyService.createPolicy(proposal.getCompany(), proposal.getVehicle(), discountedPrice, proposal.getStartDate(), proposal.getEndDate());
-                        addPolicyToCustomer(customer, policy);
-
-                        matchingProposal.setApproved(true);
-
-                        System.out.println(proposal.getVehicle().getPlate() + " için " + proposal.getCompany().getName() + " şirketinden " + discountedPrice + " TL karşılığında poliçe alındı.");
-                        System.out.println("Poliçe başlangıç tarihi: " + proposal.getStartDate());
-                        System.out.println("Poliçe bitiş tarihi: " + proposal.getEndDate());
-                        System.out.println("Poliçe sahibi: " + customer.getName());
-                        System.out.println("Poliçe komisyon oranı: " + proposal.getCompany().getCommission());
-                        System.out.println("Poliçe komisyon ödemesi: " + commissionAmount);
-                    }
-                }
-            }
-        }
-    }
 
     public BankAccount checkCustomerBankAccount(Customer customer, BigDecimal amount) {
         List<BankAccount> bankAccountList = customer.getBankAccountList();
