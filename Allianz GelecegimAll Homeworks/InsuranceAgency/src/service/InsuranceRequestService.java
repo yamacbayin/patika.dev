@@ -6,6 +6,12 @@ import java.util.ArrayList;
 
 public class InsuranceRequestService {
 
+    public InsuranceRequest createInsuranceRequest(Vehicle vehicle) {
+        InsuranceRequest insuranceRequest = new InsuranceRequest();
+        insuranceRequest.setVehicle(vehicle);
+        return insuranceRequest;
+    }
+
     public InsuranceRequest createInsuranceRequest(Vehicle vehicle, Policy policy) {
         InsuranceRequest insuranceRequest = new InsuranceRequest();
         insuranceRequest.setVehicle(vehicle);

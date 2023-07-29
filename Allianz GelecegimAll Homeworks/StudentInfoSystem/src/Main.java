@@ -1,11 +1,13 @@
 
 import main.CourseGrade;
+import main.GenerateTranscript;
 import main.Transcript;
 import util.Grade;
 import util.GradeTest;
 
 public class Main {
     public static void main(String[] args) {
+        /*
         new GradeTest().printTest();
 
         System.out.println("\n----------------------------\n");
@@ -24,6 +26,10 @@ public class Main {
         transcript.addCourseTaken(course4);
         transcript.addCourseTaken(course5);
 
-        System.out.println(transcript);
+        System.out.println(transcript);*/
+
+        GenerateTranscript generateTranscript = new GenerateTranscript();
+        generateTranscript.chooseOption();
+
     }
 }
